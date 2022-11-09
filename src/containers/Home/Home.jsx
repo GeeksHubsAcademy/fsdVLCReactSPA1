@@ -17,7 +17,10 @@ const Home = () => {
 
         //Uso un condicional para NO entrar en un bucle infinito
          if(characters.length === 0){
-            bringCharacters();
+            
+            setTimeout(()=>{
+                bringCharacters();
+            },2000);
             
         };
 
@@ -43,15 +46,26 @@ const Home = () => {
     }
 
 
-    return(
-        // Aqui estamos devolviendo el nodo padre que consiste en un elemento JSX
-        <div className="homeDesign">
-            soy Home
-            {/* <Counter frequency={5}/> */}
-            {/* <Counter frequency={17}/>
-            <Counter frequency={11}/> */}
-        </div>
-    )
+    if(characters.length > 0){
+
+        return(
+            <div className="homeDesign">
+                {characters[0].name}
+            </div>
+        )
+
+    } else {
+        return(
+            // Aqui estamos devolviendo el nodo padre que consiste en un elemento JSX
+            <div className="homeDesign">
+                CARGANDO DATOS
+                {/* <Counter frequency={5}/> */}
+                {/* <Counter frequency={17}/>
+                <Counter frequency={11}/> */}
+            </div>
+        )
+    }
+    
 
 }
 
